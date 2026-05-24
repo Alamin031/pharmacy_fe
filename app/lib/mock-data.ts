@@ -1,0 +1,278 @@
+import type { Medicine, Customer, Order, Delivery, Supplier, User } from "./types";
+
+export const mockMedicines: Medicine[] = [
+  {
+    id: "m1",
+    name: "Paracetamol 500mg",
+    genericName: "Paracetamol",
+    company: "Square Pharmaceuticals",
+    category: "Analgesic",
+    price: 2.5,
+    costPrice: 1.2,
+    stock: 450,
+    minStock: 100,
+    unit: "tablet",
+    barcode: "1234567890123",
+    description: "Effective for fever and mild pain",
+    dosage: "500mg",
+    composition: "Paracetamol 500mg",
+    createdAt: new Date("2024-01-01"),
+    updatedAt: new Date("2024-01-20"),
+  },
+  {
+    id: "m2",
+    name: "Ibuprofen 400mg",
+    genericName: "Ibuprofen",
+    company: "Beximco Pharmaceuticals",
+    category: "Anti-inflammatory",
+    price: 3.0,
+    costPrice: 1.5,
+    stock: 320,
+    minStock: 80,
+    unit: "tablet",
+    barcode: "1234567890124",
+    description: "Anti-inflammatory and pain reliever",
+    dosage: "400mg",
+    composition: "Ibuprofen 400mg",
+    createdAt: new Date("2024-01-02"),
+    updatedAt: new Date("2024-01-21"),
+  },
+  {
+    id: "m3",
+    name: "Amoxicillin 500mg",
+    genericName: "Amoxicillin",
+    company: "ACI Pharmaceuticals",
+    category: "Antibiotic",
+    price: 5.0,
+    costPrice: 2.2,
+    stock: 150,
+    minStock: 50,
+    unit: "capsule",
+    barcode: "1234567890125",
+    description: "Broad-spectrum antibiotic",
+    dosage: "500mg",
+    composition: "Amoxicillin 500mg",
+    createdAt: new Date("2024-01-03"),
+    updatedAt: new Date("2024-01-22"),
+  },
+  {
+    id: "m4",
+    name: "Aspirin 75mg",
+    genericName: "Aspirin",
+    company: "Incepta Pharmaceuticals",
+    category: "Analgesic",
+    price: 1.5,
+    costPrice: 0.7,
+    stock: 600,
+    minStock: 150,
+    unit: "tablet",
+    barcode: "1234567890126",
+    description: "Low-dose aspirin for heart health",
+    dosage: "75mg",
+    composition: "Aspirin 75mg",
+    createdAt: new Date("2024-01-04"),
+    updatedAt: new Date("2024-01-23"),
+  },
+  {
+    id: "m5",
+    name: "Omeprazole 20mg",
+    genericName: "Omeprazole",
+    company: "Opsonin Pharma",
+    category: "Antacid",
+    price: 4.5,
+    costPrice: 2.0,
+    stock: 200,
+    minStock: 50,
+    unit: "capsule",
+    barcode: "1234567890127",
+    description: "Reduces stomach acid",
+    dosage: "20mg",
+    composition: "Omeprazole 20mg",
+    createdAt: new Date("2024-01-05"),
+    updatedAt: new Date("2024-01-24"),
+  },
+];
+
+export const mockCustomers: Customer[] = [
+  {
+    id: "c1",
+    name: "Ahmed Khan",
+    email: "ahmed@example.com",
+    phone: "+8801700000001",
+    address: "123 Main St, Dhaka",
+    city: "Dhaka",
+    accountType: "retail",
+    totalDue: 500,
+    totalPurchased: 15000,
+    loyaltyPoints: 1500,
+    lastPurchaseDate: new Date("2024-01-20"),
+    createdAt: new Date("2023-06-01"),
+  },
+  {
+    id: "c2",
+    name: "Fatima Ahmed",
+    email: "fatima@example.com",
+    phone: "+8801700000002",
+    address: "456 Oak Ave, Dhaka",
+    city: "Dhaka",
+    accountType: "retail",
+    totalDue: 200,
+    totalPurchased: 8000,
+    loyaltyPoints: 800,
+    lastPurchaseDate: new Date("2024-01-19"),
+    createdAt: new Date("2023-07-15"),
+  },
+  {
+    id: "c3",
+    name: "Rahman Hospital",
+    email: "rahman@hospital.com",
+    phone: "+8801700000003",
+    address: "Hospital Complex, Dhaka",
+    city: "Dhaka",
+    accountType: "corporate",
+    totalDue: 5000,
+    totalPurchased: 120000,
+    loyaltyPoints: 12000,
+    lastPurchaseDate: new Date("2024-01-21"),
+    createdAt: new Date("2023-01-10"),
+  },
+];
+
+export const mockOrders: Order[] = [
+  {
+    id: "o1",
+    orderNumber: "ORD-2024-001",
+    customerId: "c1",
+    items: [
+      { medicineId: "m1", quantity: 2, price: 2.5, discount: 0 },
+      { medicineId: "m3", quantity: 1, price: 5.0, discount: 0 },
+    ],
+    subtotal: 10.0,
+    tax: 1.5,
+    discount: 0,
+    total: 11.5,
+    status: "delivered",
+    paymentStatus: "paid",
+    paymentMethod: "cash",
+    createdAt: new Date("2024-01-15"),
+    updatedAt: new Date("2024-01-16"),
+  },
+  {
+    id: "o2",
+    orderNumber: "ORD-2024-002",
+    customerId: "c2",
+    items: [
+      { medicineId: "m2", quantity: 3, price: 3.0, discount: 0.5 },
+    ],
+    subtotal: 9.0,
+    tax: 1.35,
+    discount: 0.5,
+    total: 9.85,
+    status: "pending",
+    paymentStatus: "unpaid",
+    paymentMethod: "mobile_banking",
+    createdAt: new Date("2024-01-21"),
+    updatedAt: new Date("2024-01-21"),
+  },
+];
+
+export const mockUsers: User[] = [
+  {
+    id: "u1",
+    email: "admin@pharmacy.com",
+    name: "Admin User",
+    role: "admin",
+    branch: "main",
+    phone: "+8801700000000",
+    status: "active",
+    createdAt: new Date("2023-01-01"),
+  },
+  {
+    id: "u2",
+    email: "pharmacist@pharmacy.com",
+    name: "Dr. Karim Ahmed",
+    role: "pharmacist",
+    branch: "main",
+    phone: "+8801700000011",
+    status: "active",
+    createdAt: new Date("2023-02-01"),
+  },
+  {
+    id: "u3",
+    email: "staff@pharmacy.com",
+    name: "Staff Member",
+    role: "staff",
+    branch: "main",
+    phone: "+8801700000012",
+    status: "active",
+    createdAt: new Date("2023-03-01"),
+  },
+];
+
+export const mockSuppliers: Supplier[] = [
+  {
+    id: "s1",
+    name: "Square Pharmaceuticals",
+    email: "sales@square.com",
+    phone: "+8801800000001",
+    address: "Dhaka, Bangladesh",
+    contactPerson: "Karim Ahmed",
+    paymentTerms: "30 days",
+    totalDue: 50000,
+    totalPurchased: 500000,
+    createdAt: new Date("2023-01-01"),
+  },
+  {
+    id: "s2",
+    name: "Beximco Pharma",
+    email: "sales@beximco.com",
+    phone: "+8801800000002",
+    address: "Dhaka, Bangladesh",
+    contactPerson: "Fatima Khan",
+    paymentTerms: "45 days",
+    totalDue: 75000,
+    totalPurchased: 750000,
+    createdAt: new Date("2023-02-01"),
+  },
+];
+
+export const mockDeliveries: Delivery[] = [
+  {
+    id: "d1",
+    orderId: "o1",
+    riderId: "u4",
+    status: "delivered",
+    pickupAddress: "Pharmacy Main Branch, Dhaka",
+    deliveryAddress: "123 Main St, Dhaka",
+    distance: 5.2,
+    estimatedTime: 25,
+    actualDeliveryTime: new Date("2024-01-15 14:30:00"),
+    ratings: 5,
+    createdAt: new Date("2024-01-15 13:30:00"),
+  },
+];
+
+// Dashboard metrics helper
+export function getMockDashboardMetrics() {
+  const today = new Date();
+  const monthStart = new Date(today.getFullYear(), today.getMonth(), 1);
+  const orderToday = mockOrders.filter(
+    (o) => new Date(o.createdAt).toDateString() === today.toDateString()
+  );
+  const orderMonth = mockOrders.filter((o) => o.createdAt >= monthStart);
+
+  const todaySales = orderToday.reduce((sum, o) => sum + o.total, 0);
+  const monthlyRevenue = orderMonth.reduce((sum, o) => sum + o.total, 0);
+  const lowStockMedicines = mockMedicines.filter((m) => m.stock <= m.minStock);
+
+  return {
+    todaySales,
+    monthlyRevenue,
+    profit: monthlyRevenue * 0.35,
+    dueAmount: mockCustomers.reduce((sum, c) => sum + c.totalDue, 0),
+    totalCustomers: mockCustomers.length,
+    lowStockMedicines,
+    expiringMedicines: [],
+    deadStock: [],
+  };
+}
